@@ -1,10 +1,18 @@
 package javalearn.helloword;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/todo")
 public class HelloWorldController {
+    @Autowired
+    private serviceController service;
+    @GetMapping("/todo")
+    String todoshow() {
+        service.printtodo();
+        return "todo";
+    }
     @GetMapping("/hello")
     String sayHelloWorld(){
         return "hello world";
